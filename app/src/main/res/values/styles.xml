@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- res/values/styles.xml -->
+
+    <!-- Switch Theme -->
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">#FF1976D2</item>
+    </style>
+
+    <!-- NumberPicker Theme -->
+    <style name="NumberPickerTheme" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">#FFFFFFFF</item>
+        <item name="android:textColorSecondary">#FF9E9E9E</item>
+        <item name="android:colorControlNormal">#FF333333</item>
+        <item name="android:colorControlActivated">#FF1976D2</item>
+    </style>
+
+    <!-- Spinner Theme for Samsung Style -->
+    <style name="SpinnerTheme" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">#FFFFFFFF</item>
+        <item name="android:textColorSecondary">#FF9E9E9E</item>
+        <item name="android:colorControlNormal">#FF333333</item>
+        <item name="android:colorControlActivated">#FF1976D2</item>
+        <item name="android:dropDownListViewStyle">@style/SpinnerDropDownStyle</item>
+    </style>
+
+    <!-- Spinner Dropdown Style -->
+    <style name="SpinnerDropDownStyle" parent="Widget.AppCompat.ListView.DropDown">
+        <item name="android:background">#FF1A1A1A</item>
+        <item name="android:divider">#FF333333</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
+
+    <!-- Spinner Item Style -->
+    <style name="SpinnerItemStyle">
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">12dp</item>
+<!--        <item name="android:background">@drawable/spinner_item_selector</item>-->
+    </style>
+</resources>
