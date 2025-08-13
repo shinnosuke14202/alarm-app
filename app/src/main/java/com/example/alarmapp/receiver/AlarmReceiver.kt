@@ -3,23 +3,39 @@ package com.example.alarmapp.receiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.widget.Toast
-import androidx.core.content.ContextCompat
-import com.example.alarmapp.features.alarm.service.AlarmService
-import com.example.alarmapp.utils.ALARM_CREATE_OR_CANCEL
+import com.example.alarmapp.AlarmRingActivity
+import com.example.alarmapp.data.AlarmDatabase
+import com.example.alarmapp.AlarmService
+import com.example.alarmapp.helper.AlarmManagerHelper
+import com.example.alarmapp.models.Alarm
 
 class AlarmReceiver : BroadcastReceiver() {
-    override fun onReceive(context: Context?, intent: Intent?) {
-        val chooseCreate = intent?.getBooleanExtra(ALARM_CREATE_OR_CANCEL, false) ?: return
+    override fun onReceive(context: Context, intent: Intent) {
+        val alarm = intent.getParcelableExtra<Alarm>("alarm")
 
-        if (chooseCreate) {
-            val serviceIntent = Intent(context, AlarmService::class.java)
-            ContextCompat.startForegroundService(context!!, serviceIntent)
-            Toast.makeText(context, "Start Service!", Toast.LENGTH_SHORT).show()
-        } else {
-            val stopIntent = Intent(context, AlarmService::class.java)
-            stopIntent.action = "STOP_ALARM"
-            context?.startService(stopIntent)
+        if (alarm != null) {
+            // Start the alarm service
+            val serviceIntent = Intent(context, AlarmService::class.java).apply {
+                putExtra("alarm", alarm)
+            }
+            context.startForegroundService(serviceIntent)
+
+            // Show alarm activity
+            val alarmIntent = Intent(context, AlarmRingActivity::class.java).apply {
+                putExtra("alarm", alarm)
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+            }
+            context.startActivity(alarmIntent)
+
+            // Reschedule if it's a recurring alarm
+            if (!alarm.isOneTime) {
+                val alarmManager = AlarmManagerHelper(context)
+                alarmManager.scheduleAlarm(alarm)
+            } else {
+                // Disable one-time alarm
+                val database = AlarmDatabase.getInstance(context)
+                database.saveAlarm(alarm.copy(isEnabled = false))
+            }
         }
     }
 }

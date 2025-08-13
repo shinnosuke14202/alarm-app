@@ -1,135 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <TextView
+        android:id="@+id/nextAlarmText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No alarms set"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/addAlarmButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Alarm"
+        android:layout_marginBottom="16dp" />
+
+    <ListView
+        android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/navigationLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_weight="1" />
 
-    <!-- Bottom Navigation -->
-    <LinearLayout
-        android:id="@+id/navigationLayout"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:background="#FF1A1A1A"
-        android:elevation="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:id="@+id/tab_alarm"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/alarmIcon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_access_alarm_24"
-                app:tint="#FF1976D2" />
-
-            <TextView
-                android:id="@+id/alarmTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Alarm"
-                android:textColor="#FF1976D2"
-                android:textSize="10sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tab_world_clock"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_access_time_24"
-                app:tint="#FF9E9E9E" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="World Clock"
-                android:textColor="#FF9E9E9E"
-                android:textSize="10sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tab_stopwatch"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_timer_24"
-                app:tint="#FF9E9E9E" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Stopwatch"
-                android:textColor="#FF9E9E9E"
-                android:textSize="10sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tab_timer"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_timer_10_select_24"
-                app:tint="#FF9E9E9E" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Timer"
-                android:textColor="#FF9E9E9E"
-                android:textSize="10sp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
